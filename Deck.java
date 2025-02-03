@@ -1,18 +1,72 @@
 /**
  * Write a description of class Deck here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Stephen) 
+ * @version (1.24)
  */
 
 import greenfoot.*;
+import java.util.ArrayList;
 
-public class Deck 
-{
-    /****************************************************
-    ***   Leave as comment until ready to implement   ***
-    *****************************************************
-    // adds all the cards to the unshuffled deck.   
+public class Deck
+{  
+    private ArrayList<Card> shuffledDeck;
+    private Card[] unShuffledDeck; 
+    
+    Deck(int numOfCardsInDeck)
+    {
+        numOfCardsInDeck = limitNumCardsInDeck(numOfCardsInDeck);     
+        unShuffledDeck = new Card[numOfCardsInDeck + 1];          
+        shuffledDeck = new ArrayList<>();                         
+        populateUnshuffledDeckWithCards(numOfCardsInDeck);       
+        createShuffledDeck();                                      
+    }
+    
+    public int getNumCardsInDeck()
+    {
+        return shuffledDeck.size(); 
+    }
+    
+    public Card getTopCard()
+    {
+        return shuffledDeck.remove(0); 
+    }
+    
+    //returns a card at a specific location in the deck
+    public Card getShuffledCard(int numOfCardsInDeck)
+    {
+        return shuffledDeck.get(numOfCardsInDeck);
+    }
+
+    public ArrayList<Card> getShuffledDeck()
+    {
+        return shuffledDeck;
+    }
+    
+
+    public int limitNumCardsInDeck(int numOfCardsInDeck)
+    {
+        if(numOfCardsInDeck <= 27)
+        {
+            return 27;
+        }
+        else
+        {
+            return 81; 
+        }
+    }
+    
+    
+    public void createShuffledDeck()
+    {
+        for(int i = 0; i < unShuffledDeck.length; i++)
+        {
+            shuffledDeck.add((int) (Math.random() * shuffledDeck.size()), unShuffledDeck[i]);
+        }
+        shuffledDeck.remove(shuffledDeck.size() - 1);
+    }
+    
+    
     private void populateUnshuffledDeckWithCards(int numOfCardsInDeck)        
     {
         unShuffledDeck[0] = new Card(Card.Shape.NO_SHAPE, Card.Color.NO_COLOR,0,0,
@@ -267,7 +321,5 @@ public class Deck
                         new GreenfootImage("Triplets_2/triangle_red_3_2_selected.png"));
                 }
           }
-    }
-    
-    **************  END OF COMMENT BLOCK  ***************/
+    }    
 }

@@ -5,69 +5,102 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Card extends Actor
 {
-   public enum Shape
-   {
-       CIRCLE, SQUARE, TRIANGLE, NO_SHAPE;
-   }
-   public enum Color
-   {
-       RED, GREEN, BLUE, NO_COLOR;
-   }
-   private Shape shape;
-   private Color color;
-   private boolean isSelected;
-   private GreenfootImage cardImage, selectedCardImage;
-   private int numberOfShapes, shading;
-   
-   public Card(Shape shape, Color color, int numberOfShapes, 
-   int shading, GreenfootImage cardImage, GreenfootImage selectedCardImage)
-   {
-       this.shape = shape;
-       this.color = color;
-       this.numberOfShapes = numberOfShapes;
-       this.shading = shading;
-       this.cardImage = cardImage;
-       this.selectedCardImage = selectedCardImage;
-       setImage(cardImage);
-   }
-   
-   public Shape getShape()
-   {
-       return shape;
-   }
-   
-   public Color getColor()
-   {
-       return color;
-   }
-   
-   public boolean getIsSelected()
-   {
-       return isSelected;
-   }
-   
-   public GreenfootImage getCardImage()
-   {
-       return cardImage;
-   }
-   
-   public GreenfootImage getSelectedCardImage()
-   {
-       return selectedCardImage;
-   }
-   
-   public int getNumberOfShapes()
-   {
-       return numberOfShapes;
-   }
-   
-   public int getShading()
-   {
-       return shading;
-   }
-   
-   public void setIsSelected(boolean isSelected)
-   {
-       this.isSelected = isSelected;
-   }
+    
+    public enum Shape
+    {
+        TRIANGLE, SQUARE, CIRCLE, NO_SHAPE
+    }
+    
+    public enum Color
+    {
+        RED, GREEN, BLUE, NO_COLOR
+    }
+    
+    private Shape shape;
+    private Color color;
+    private boolean isSelected;
+    private GreenfootImage image, selectedImage;
+    private int numberOfShapes, shading;  
+    
+    public Card(Shape shape, Color color, int numberOfShapes, int shading,
+    GreenfootImage cardImage, GreenfootImage selectedCardImage)
+    {
+        this.shape = shape;
+        this.color = color;
+        this.numberOfShapes = numberOfShapes;
+        this.shading = shading;
+        image = cardImage;
+        this.selectedImage = selectedCardImage; 
+        setImage(image);
+    }
+    
+    public boolean getIsSelected()
+    {
+        return isSelected;
+    }
+    
+    public Shape getShape()
+    {
+        return shape;
+    }
+       
+    public Color getColor()
+    {
+        return color;
+    }
+    
+    public int getNumberOfShapes()
+    {
+        return numberOfShapes; 
+    }
+    
+    public int getShading()
+    {
+        return shading;
+    }
+    
+    public GreenfootImage getCardImage() 
+    {
+        return image;
+    }
+    
+    public GreenfootImage getSelectedCardImage()
+    {
+        return selectedImage;
+    }
+    
+    public void setNumberOfShapes(int num)
+    {
+        numberOfShapes = num; 
+    }
+    
+    public void setShape(Shape shape)
+    {
+        this.shape = shape;
+    }
+       
+    public void setColor(Color color)
+    {
+        this.color = color;
+    }
+    
+    public void setShading(int num)
+    {
+        this.shading = num;
+    }
+    
+    public void setCardImage(GreenfootImage image) 
+    {
+        this.image = image; 
+    }
+    
+    public void setSelectedCardImage(GreenfootImage image)
+    {
+        selectedImage = image;
+    }
+    
+    public void setIsSelected(boolean isSelected)
+    {
+        this.isSelected = isSelected;
+    }
 }
